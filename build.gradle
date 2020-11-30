@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+group 'org.joyanjacob'
+version '1.0'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    compile group: 'io.cucumber', name: 'cucumber-junit', version: '5.2.0'
+    compile group: 'io.cucumber', name: 'cucumber-java', version: '5.2.0'
+    compile group: 'io.cucumber', name: 'cucumber-jvm', version: '5.2.0', ext: 'pom'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'io.cucumber', name: 'cucumber-junit', version: '5.2.0'
+    testCompile group: 'io.cucumber', name: 'cucumber-java', version: '5.2.0'
+    testCompile group: 'io.cucumber', name: 'cucumber-jvm', version: '5.2.0', ext: 'pom'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testCompile
+    }
+}
+
+task cucumber() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty', '--glue', 'stepdefs', 'src/test/resources']
+        }
+    }
+}

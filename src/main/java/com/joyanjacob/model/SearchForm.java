@@ -23,25 +23,4 @@ public class SearchForm extends BrowserGlue {
     public void submitSearch(){
         driver.findElement(submitSearch).click();
     }
-//
-//    public void clickRemoteAccess(){
-//        driver.findElement(remoteAccess).click();
-//    }
-//
-//    public void clickShoppingCartLink() throws InterruptedException {
-//        driver.findElement(shoppingCart).click();
-//        Thread.sleep(3000);
-//    }
-//
-//    public void clickAdvertiseLink() { driver.findElement(advertiseLink).click(); }
-//
-//    public void clickContactAndSupportLink() { driver.findElement(contactAndSupportLink).click(); }
-//
-//    public void clickTermsAndConditionsLink() { driver.findElement(termsAndConditionsLink).click(); }
-//
-//    public void clickPrivacyPolicyLink() { driver.findElement(privacyPolicy).click(); }
-//
-//    public void clickRelxLogoLink() { driver.findElement(relxLogo).click(); }
-//
-//    public void clickUseOfCookiesLink() { driver.findElement(useOfCookies).click(); }
 }
